@@ -3,7 +3,7 @@ import { getMovie, postMovie } from "../controllers/movieController.js";
 
 const router = express.Router();
 
-router.get("/movie", getMovie);
-router.get("/postmovie", postMovie);
+router.get("/getmovie", getMovie);
+router.post("/postmovie", postMovie);
 
 export default router;
