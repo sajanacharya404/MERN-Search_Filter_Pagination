@@ -62,6 +62,24 @@ const Movie = () => {
           </li>
         ))}
       </ul>
+      <p className="mt-4">
+        Page {page} of {Math.ceil(total / limit)}
+      </p>
+      <div className="mt-4">
+        <button
+          disabled={page === 1}
+          onClick={() => handlePageChange(page - 1)}
+          className="bg-gray-300 px-4 py-2 mr-2 rounded"
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => handlePageChange(page + 1)}
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
