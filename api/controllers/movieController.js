@@ -27,7 +27,7 @@ export const getMovie = async (req, res, next) => {
     const totalDocuments = await movieModel.countDocuments(query);
     const movies = await movieModel
       .find(query)
-      .sort({ [sortField]: sortOrder === "asc" ? true : false })
+      .sort({ [sortField]: sortOrder === "asc" ? 1 : -1 })
       .skip((page - 1) * limit)
       .limit(Number(limit));
     res.json({
