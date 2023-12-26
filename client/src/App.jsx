@@ -1,9 +1,10 @@
 import React from "react";
+import Movies from "./Movies";
 
 const App = () => {
   return (
     <div>
-      <h1 className="bg-red-600">Hello</h1>
+      <Movies />
     </div>
   );
 };
