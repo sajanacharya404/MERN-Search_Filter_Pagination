@@ -25,9 +25,17 @@ export const getMovie = async (req, res, next) => {
       query.genre = genre;
     }
     const totalDocuments = await movieModel.countDocuments(query);
+    const sortOptions = {};
+    // Handling sorting for multiple fields (year and rating)
+    if (sortField === "year" || sortField === "rating") {
+      sortOptions[sortField] = sortOrder === "asc" ? 1 : -1;
+    } else {
+      // Default sorting for other fields (e.g., name)
+      sortOptions[sortField] = sortOrder === "asc" ? 1 : -1;
+    }
     const movies = await movieModel
       .find(query)
-      .sort({ [sortField]: sortOrder === "asc" ? 1 : -1 })
+      .sort(sortOptions)
       .skip((page - 1) * limit)
       .limit(Number(limit));
     res.json({
